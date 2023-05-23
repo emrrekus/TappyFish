@@ -18,13 +18,17 @@ public class ObstacleSpawner : MonoBehaviour
 
     void Update()
     {
-        timer += Time.deltaTime;
-        if (timer >= maxTime)
+        if (GameManager.gameOver == false)
         {
-            randomY = Random.Range(minY, maxY);
-            InstantiateObstacle();
-            timer = 0;
+            timer += Time.deltaTime;
+            if (timer >= maxTime)
+            {
+                randomY = Random.Range(minY, maxY);
+                InstantiateObstacle();
+                timer = 0;
+            }
         }
+       
     }
 
     public void InstantiateObstacle()

@@ -28,8 +28,10 @@ public class LeftMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if(GameManager.gameOver==false)
         transform.position = new Vector2(transform.position.x - speed * Time.deltaTime, transform.position.y);
+        
+        
         if (gameObject.CompareTag("Ground"))
         {
             if (transform.position.x <= -groundWidth)
