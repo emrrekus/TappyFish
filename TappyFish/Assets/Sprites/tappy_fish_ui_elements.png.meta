@@ -204,27 +204,6 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Small_Fish
-      rect:
-        serializedVersion: 2
-        x: 1015
-        y: 1356
-        width: 163
-        height: 129
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8442a66b9d19f964e80f65e8000ab9cc
-      internalID: 2034207383
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: Bronz Medal
       rect:
         serializedVersion: 2
@@ -283,27 +262,6 @@ TextureImporter:
       bones: []
       spriteID: 30830aef0deaeaf4c9dec36b76044207
       internalID: -912718132
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Click
-      rect:
-        serializedVersion: 2
-        x: 1046
-        y: 1162
-        width: 103
-        height: 135
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d06ba20f955972d4daa1ac8beb2c67d1
-      internalID: -1682729913
       vertices: []
       indices: 
       edges: []
@@ -378,7 +336,7 @@ TextureImporter:
         x: 784
         y: 871
         width: 628
-        height: 230
+        height: 617
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}

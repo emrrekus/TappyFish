@@ -13,12 +13,17 @@ public class ObstacleSpawner : MonoBehaviour
     public float minY;
     private float randomY;
      float timer;
+     
+     
 
-    
+     private void Start()
+     {
+         
+     }
 
-    void Update()
+     void Update()
     {
-        if (GameManager.gameOver == false)
+        if (GameManager.gameOver == false&& GameManager.gameStarted==true)
         {
             timer += Time.deltaTime;
             if (timer >= maxTime)

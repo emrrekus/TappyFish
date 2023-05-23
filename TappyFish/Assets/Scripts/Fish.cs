@@ -18,20 +18,23 @@ public class Fish : MonoBehaviour
     public GameManager _GameManager;
     private SpriteRenderer sp;
     private Animator anim;
+
+    public ObstacleSpawner _ObstacleSpawner;
+
+    [SerializeField] private AudioSource Swim, Hit, Point;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        rb.gravityScale = 0;
         sp = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
-
     }
 
     // Update is called once per frame
     void Update()
     {
         FishSwim();
-        
-      
     }
 
     private void FixedUpdate()
@@ -41,10 +44,22 @@ public class Fish : MonoBehaviour
 
     void FishSwim()
     {
-        if (Input.GetMouseButtonDown(0) && GameManager.gameOver==false)
+        if (Input.GetMouseButtonDown(0) && GameManager.gameOver == false)
         {
-            rb.velocity = Vector2.zero;
-            rb.velocity = new Vector2(rb.velocity.x, speed);
+            Swim.Play();
+            if (GameManager.gameStarted == false)
+            {
+                rb.gravityScale = 1f;
+                rb.velocity = Vector2.zero;
+                rb.velocity = new Vector2(rb.velocity.x, speed);
+                _ObstacleSpawner.InstantiateObstacle();
+                _GameManager.GameHasStarted();
+            }
+            else
+            {
+                rb.velocity = Vector2.zero;
+                rb.velocity = new Vector2(rb.velocity.x, speed);
+            }
         }
     }
 
@@ -69,21 +84,25 @@ public class Fish : MonoBehaviour
         {
             transform.rotation = Quaternion.Euler(0, 0, angle);
         }
-
-        
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Obstacle"))
         {
-            
             _Score.Scored();
+            Point.Play();
         }
-        else if(other.CompareTag("Column"))
+        else if (other.CompareTag("Column") && GameManager.gameOver==false)
         {
             _GameManager.GameOver();
+            FishDiesEffect();
         }
+    }
+
+    void FishDiesEffect()
+    {
+        Hit.Play();
     }
 
     private void OnCollisionEnter2D(Collision2D col)
@@ -94,10 +113,7 @@ public class Fish : MonoBehaviour
             {
                 _GameManager.GameOver();
                 GameOver();
-            }
-            else
-            {
-                
+                FishDiesEffect();
             }
             
         }
