@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,6 +7,7 @@ public class Fish : MonoBehaviour
 {
     private Rigidbody2D rb;
     [SerializeField] private float speed;
+    public Score _Score;
 
     private int angle;
     private int maxAngle = 20;
@@ -20,8 +22,13 @@ public class Fish : MonoBehaviour
     void Update()
     {
         FishSwim();
-        FishRotation();
+        
       
+    }
+
+    private void FixedUpdate()
+    {
+        FishRotation();
     }
 
     void FishSwim()
@@ -51,5 +58,14 @@ public class Fish : MonoBehaviour
         }
 
         transform.rotation = Quaternion.Euler(0, 0, angle);
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Obstacle"))
+        {
+            
+            _Score.Scored();
+        }
     }
 }
